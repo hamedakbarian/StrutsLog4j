@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app>
+    <container-descriptor>
+        <prefer-application-packages>
+            <package-name>org.slf4j.*</package-name>
+        </prefer-application-packages>
+        <prefer-application-resources>
+            <resource-name>org/slf4j/impl/StaticLoggerBinder.class</resource-name>
+        </prefer-application-resources>
+    </container-descriptor>
+    <!--<container-descriptor>-->
+        <!--<prefer-web-inf-classes>true</prefer-web-inf-classes>-->
+    <!--</container-descriptor>-->
+    <!--<resource-description>-->
+        <!--<jndi-name>fiskDS</jndi-name>-->
+        <!--<res-ref-name>jdbc/fisk</res-ref-name>-->
+    <!--</resource-description>-->
+    <!--<resource-ref>-->
+        <!--<res-ref-name>logger</res-ref-name>-->
+        <!--<res-type>javax.sql.DataSource</res-type>-->
+        <!--<res-auth>CONTAINER</res-auth>-->
+    <!--</resource-ref>-->
+    <!--<resource-description>-->
+        <!--<jndi-name>logger</jndi-name>-->
+        <!--<res-ref-name>jdbc/logger </res-ref-name>-->
+        <!--&lt;!&ndash;<res-type>javax.sql.DataSource</res-type>&ndash;&gt;-->
+        <!--&lt;!&ndash;<res-auth>CONTAINER</res-auth>&ndash;&gt;-->
+    <!--</resource-description>-->
+</weblogic-web-app>

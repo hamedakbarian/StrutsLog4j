@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-application xmlns="http://www.bea.com/ns/weblogic/90">
+
+    <!-- GERMAN: http://www.torsten-horn.de/techdocs/jee-oracleweblogic.htm -->
+    <prefer-application-packages>
+        <package-name>org.slf4j.*</package-name>
+        <package-name>org.apache.commons.logging.*</package-name>
+    </prefer-application-packages>
+
+    <prefer-application-resources>
+        <resource-name>org/slf4j/impl/StaticLoggerBinder.class</resource-name>
+    </prefer-application-resources>
+
+</weblogic-application>

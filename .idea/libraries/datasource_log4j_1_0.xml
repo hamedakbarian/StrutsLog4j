@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="datasource-log4j-1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/datasource-log4j-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Desktop/datasource-log4j-1.0.jar!/docs" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

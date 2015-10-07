@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="myapplication" status="trace" monitorInterval="5">
+    <Appenders>
+        <JDBC name="databaseAppender" tableName="TBL_LOG4JTEST" > <!-- TBL_LOG4JTEST-->
+            <ConnectionFactory class="jndi.ConnectionFactory" method="getDatabaseConnection"/>
+            <Column name="eventDate" isEventTimestamp="true"/>
+            <Column name="loglevel" pattern="%level"/> <!--change for Oracle-->
+            <Column name="logger" pattern="%logger"/>
+            <Column name="message" pattern="%message"/>
+            <Column name="exception" pattern="%ex{full}"/>
+            <Column name="DateOfBirth_Old" pattern="%X{DateOfBirth_Old}"/>
+            <Column name="DateOfBirth_New" pattern="%X{DateOfBirth_New}"/>
+            <Column name="Person_Fname_Old" pattern="%X{Person_Fname_Old}"/>
+            <Column name="Person_Fname_New" pattern="%X{Person_Fname_New}"/>
+            <Column name="Father_Nin_Old" pattern="%X{Father_Nin_Old}"/>
+            <Column name="Father_Nin_New" pattern="%X{Father_Nin_New}"/>
+            <Column name="Mother_Nin_Old" pattern="%X{Mother_Nin_Old}"/>
+            <Column name="Mother_Nin_New" pattern="%X{Mother_Nin_New}"/>
+            <Column name="UserID" pattern="%X{UserID}"/>
+            <Column name="Person_Nin" pattern="%X{Person_Nin}"/>
+            <Column name="Office_Code" pattern="%X{Office_Code}"/>
+        </JDBC>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg %X{key} -testing-%n"/>
+            <filters>
+                <MarkerFilter marker="Something1" onMatch="ACCEPT" onMismatch="DENY"/>
+            </filters>
+        </Console>
+        <Console name="Console1" target="SYSTEM_OUT">
+            <!--<PatternLayout pattern="%C{1}.%M %m %ex%n"/>-->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="fileAppender" fileName="D:/app.log">
+            <PatternLayout pattern="%message %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n %X{Office_Code}"/>
+            <!--<PatternLayout>-->
+                <!--<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+            <!--</PatternLayout>-->
+        </File>
+        <Failover name="Failover" primary="databaseAppender">
+            <Failovers>
+                <AppenderRef ref="Console1"/>
+            </Failovers>
+        </Failover>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="databaseAppender"/>
+        </Root>
+        <Logger level="ALL" name="com.mkyong.common.action">
+            <AppenderRef ref="Console1"/>
+            <AppenderRef ref="fileAppender"/>
+            <AppenderRef ref="databaseAppender"/>
+            <!--<AppenderRef ref="Failover"/>-->
+        </Logger>
+        <!--<Logger name="org.apache.struts.util.PropertyMessageResources" level="ALL" additivity="false">-->
+        <!--<AppenderRef ref="Console1"/>-->
+        <!--<AppenderRef ref="fileAppender"/>-->
+        <!--</Logger>-->
+        <!--<Root level="ALL" includeLocation="false">-->
+        <!--</Root>-->
+    </Loggers>
+</Configuration>
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+        <!--<Configuration>-->
+        <!--<Appenders>-->
+        <!--<JDBC name="databaseAppender" tableName="LOG">-->
+        <!--<ConnectionFactory class="jndi.ConnectionFactory" method="getDatabaseConnection" />-->
+        <!--<Column name="EVENT_ID" literal="LOG.APPLICATION_LOG_SEQUENCE.NEXTVAL" /> -->
+        <!--<Column name="EVENT_DATE" isEventTimestamp="true" />-->
+        <!--<Column name="LEVELS" pattern="%level" />-->
+        <!--<Column name="LOGGER" pattern="%logger" />-->
+        <!--<Column name="MESSAGE" pattern="%message" />-->
+        <!--<Column name="THROWABLE" pattern="%ex{full}" />-->
+        <!--</JDBC>-->
+        <!--</Appenders>-->
+        <!--<Loggers>-->
+        <!--<Root level="warn">-->
+        <!--<AppenderRef ref="databaseAppender"/>-->
+        <!--</Root>-->
+        <!--</Loggers>-->
+        <!--</Configuration>-->
